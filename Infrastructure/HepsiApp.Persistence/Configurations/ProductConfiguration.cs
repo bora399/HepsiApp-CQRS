@@ -14,28 +14,24 @@ namespace HepsiApp.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Product> builder)
         {
-            Faker faker = new("tr");
-
             Product product1 = new()
             {
                 Id = 1,
-                Title = faker.Commerce.ProductName(),
+                Title = "Product Name 1",
                 BrandId = 1,
-                Description = faker.Commerce.ProductDescription(),
-                Discount = faker.Random.Decimal(0, 10),
-                Price = faker.Finance.Amount(10, 1000),
-                CreatedDate = DateTime.Now,
+                Description = "Product Description 1",
+                Discount = 500,
+                Price = 800,
                 IsDeleted = false,
             };
             Product product2 = new()
             {
                 Id = 2,
-                Title = faker.Commerce.ProductName(),
-                BrandId = 31,
-                Description = faker.Commerce.ProductDescription(),
-                Discount = faker.Random.Decimal(0, 10),
-                Price = faker.Finance.Amount(10, 1000),
-                CreatedDate = DateTime.Now,
+                Title = "Product Name 2",
+                BrandId = 3,
+                Description = "Product Description 2",
+                Discount = 600,
+                Price = 900,
                 IsDeleted = false,
             };
             builder.HasData(product1, product2);      

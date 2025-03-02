@@ -19,14 +19,12 @@ namespace HepsiApp.Domain.Entities
             Description = description;
             CategoryId = categoryId;
             IsDeleted = IsDeleted;
-            CreatedDate = CreatedDate;
         }
         public required int Id { get; set; }
         public required string Title { get; set; }
         public required string Description { get; set; }
         public required int CategoryId { get; set; }
         public bool IsDeleted { get; set; } = false;
-        public required DateTime CreatedDate { get; set; }
         public Category Category { get; set; }
     }
 }

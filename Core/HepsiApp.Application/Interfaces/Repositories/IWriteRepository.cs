@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HepsiApp.Domain.Common
+namespace HepsiApp.Application.Interfaces.Repositories
 {
-    public interface IEntityBase
+    public interface IWriteRepository
     {
-
     }
 }

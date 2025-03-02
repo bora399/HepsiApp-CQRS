@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HepsiApp.Domain.Common
+namespace HepsiApp.Persistence.Repositories
 {
-    public interface IEntityBase
+    public class WriteRepository
     {
 
     }
