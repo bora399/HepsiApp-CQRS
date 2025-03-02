@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HepsiApp.Domain.Entities;
-using Bogus;
 
 namespace HepsiApp.Persistence.Configurations
 {
@@ -15,27 +14,22 @@ namespace HepsiApp.Persistence.Configurations
         {
             builder.Property(x => x.Name).HasMaxLength(256);
 
-            Faker faker = new("tr");
-
             Brand brand1 = new()
             {
                 Id = 1,
-                Name = faker.Commerce.Department(),
-                CreatedDate = DateTime.Now,
+                Name = "X Marka",
                 IsDeleted = false,
             };
             Brand brand2 = new()
             {
                 Id = 2,
-                Name = faker.Commerce.Department(),
-                CreatedDate = DateTime.Now,
+                Name = "Y Marka",
                 IsDeleted = false,
             };
             Brand brand3 = new()
             {
                 Id = 3,
-                Name = faker.Commerce.Department(),
-                CreatedDate = DateTime.Now,
+                Name = "Z Marka",
                 IsDeleted = true,
             };
 

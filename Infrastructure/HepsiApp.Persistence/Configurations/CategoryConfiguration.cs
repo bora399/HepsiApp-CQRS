@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace HepsiApp.Persistence.Configurations
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Category> builder
+    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
@@ -19,7 +19,6 @@ namespace HepsiApp.Persistence.Configurations
                 Name = "Elektrik",
                 Priority = 1,
                 ParentId = 0,
-                CreatedDate = DateTime.Now,
             };
             Category category2 = new()
             {
@@ -27,7 +26,6 @@ namespace HepsiApp.Persistence.Configurations
                 Name = "Moda",
                 Priority = 2,
                 ParentId = 0,
-                CreatedDate = DateTime.Now,
             };
             Category parent1 = new()
             {
@@ -35,7 +33,6 @@ namespace HepsiApp.Persistence.Configurations
                 Name = "Bilgisayar",
                 Priority = 1,
                 ParentId = 1,
-                CreatedDate = DateTime.Now,
             };
             Category parent2 = new()
             {
@@ -43,7 +40,6 @@ namespace HepsiApp.Persistence.Configurations
                 Name = "Kadın",
                 Priority = 1,
                 ParentId = 2,
-                CreatedDate = DateTime.Now,
             };
 
             builder.HasData(category1, category2, parent1, parent2);

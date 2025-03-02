@@ -10,6 +10,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{5921B14C-A12A-4DFD-9999-6B6B025C24D3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HepsiApp.Application", "Core\HepsiApp.Application\HepsiApp.Application.csproj", "{1FC4A13A-DE08-4DF0-AD67-F4F2AE36984C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3279965D-DFE1-48DD-B660-87554FD7DBB0} = {3279965D-DFE1-48DD-B660-87554FD7DBB0}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HepsiApp.Domain", "Core\HepsiApp.Domain\HepsiApp.Domain.csproj", "{3279965D-DFE1-48DD-B660-87554FD7DBB0}"
 EndProject
@@ -21,6 +24,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HepsiApp.Persistence", "Inf
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HepsiApp.WebApi", "Presentation\HepsiApp.WebApi\HepsiApp.WebApi.csproj", "{3DBB4281-A444-43D0-B53C-DD4D77CBABB6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CC3EC335-85D3-4E4E-A715-8BD8624732A7} = {CC3EC335-85D3-4E4E-A715-8BD8624732A7}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
