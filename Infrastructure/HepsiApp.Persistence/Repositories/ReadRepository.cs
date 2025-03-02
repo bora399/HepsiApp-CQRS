@@ -21,13 +21,17 @@ namespace HepsiApp.Persistence.Repositories
 
         private DbSet<T> Table { get => _dbContext.Set<T>(); }
 
-        public Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null)
+        public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null)
         {
-
+            Table.AsNoTracking();
+            if (predicate is not null) Table.Where(predicate);
+            return await Table.CountAsync();
         }
 
-        public IQueryable<T> Find(Expression<Func<T, bool>> predicate)
+        public IQueryable<T> Find(Expression<Func<T, bool>> predicate, bool enableTracking = false)
         {
+            if (!enableTracking) Table.AsNoTracking();
+            return Table.Where(predicate);
         }
 
         public async Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool enableTracking = false)
@@ -47,20 +51,22 @@ namespace HepsiApp.Persistence.Repositories
             IQueryable<T> queryable = Table;
             if (!enableTracking) queryable = queryable.AsNoTracking();
             if (include is not null) queryable = include(queryable);
+            if (predicate is not null) queryable = queryable.Where(predicate);
+            if (orderBy is not null)
+                return await orderBy(queryable).ToListAsync();
 
-            //queryable.Where(predicate);
-
-            return await queryable.FirstOrDefaultAsync(predicate);
+            return await queryable.ToListAsync();
         }
 
-        public Task<IList<T>> GetAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
+        public async Task<IList<T>> GetAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
         {
             IQueryable<T> queryable = Table;
             if (!enableTracking) queryable = queryable.AsNoTracking();
             if (include is not null) queryable = include(queryable);
-            if (predicate is not null) queryable = queryable.Where(predicate);
 
-            return await queryable.ToListAsync();
+            queryable.Where(predicate);
+
+            return (IList<T>)await queryable.FirstOrDefaultAsync(predicate);
         }
     }
 }

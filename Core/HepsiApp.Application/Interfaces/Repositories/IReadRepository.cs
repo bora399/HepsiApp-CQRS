@@ -6,6 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore;
 
 namespace HepsiApp.Application.Interfaces.Repositories
 {
@@ -24,8 +25,9 @@ namespace HepsiApp.Application.Interfaces.Repositories
         Task<IList<T>> GetAsync(Expression<Func<T, bool>> predicate = null,
             Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null,
             bool enableTracking = false);
+        
 
-        IQueryable<T> Find(Expression<Func<T, bool>> predicate);
+        IQueryable<T> Find(Expression<Func<T, bool>> predicate, bool enableTracking = false);
 
         Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null);
     }
