@@ -1,6 +1,8 @@
 ﻿using HepsiApp.Application.Interfaces.Repositories;
+using HepsiApp.Application.Interfaces.UnitOfWorks;
 using HepsiApp.Persistence.Context;
 using HepsiApp.Persistence.Repositories;
+using HepsiApp.Persistence.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +23,8 @@ namespace HepsiApp.Persistence
 
             services.AddScoped(typeof(IReadRepository<>),typeof(ReadRepository<>));
             services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 
