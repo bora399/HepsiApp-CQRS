@@ -12,9 +12,9 @@ namespace HepsiApp.Domain.Entities
         {
         }
 
-        public Detail(int Id,string title, string description, int categoryId, Category category)
+        public Detail(int id,string title, string description, int categoryId, Category category)
         {
-            Id = Id;
+            Id = id;
             Title = title;
             Description = description;
             CategoryId = categoryId;
