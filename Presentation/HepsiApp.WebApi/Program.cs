@@ -2,6 +2,7 @@ using HepsiApp.Persistence;
 using HepsiApp.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using HepsiApp.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddEndpointsApiExplorer(); // Swagger için gerekli
 builder.Services.AddSwaggerGen(); // Swagger'ý ekle
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplication();
 
 var app = builder.Build();
 
