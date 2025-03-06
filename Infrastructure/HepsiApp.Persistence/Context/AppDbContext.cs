@@ -22,6 +22,7 @@ namespace HepsiApp.Persistence.Context
         public DbSet<Detail> Details { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -33,6 +34,7 @@ namespace HepsiApp.Persistence.Context
 
             // Daha sonra Product gibi Foreign Key içeren tabloları ekle
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
         }
     }
 }
