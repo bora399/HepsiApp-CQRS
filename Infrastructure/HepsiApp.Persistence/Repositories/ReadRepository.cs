@@ -58,15 +58,15 @@ namespace HepsiApp.Persistence.Repositories
             return await queryable.ToListAsync();
         }
 
-        public async Task<IList<T>> GetAsync(Expression<Func<T, bool>> predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
+        public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool enableTracking = false)
         {
             IQueryable<T> queryable = Table;
             if (!enableTracking) queryable = queryable.AsNoTracking();
             if (include is not null) queryable = include(queryable);
 
-            queryable.Where(predicate);
+            //queryable.Where(predicate);
 
-            return (IList<T>)await queryable.FirstOrDefaultAsync(predicate);
+            return await queryable.FirstOrDefaultAsync(predicate);
         }
     }
 }
