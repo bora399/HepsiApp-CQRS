@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using HepsiApp.Application;
 using HepsiApp.Mapper;
+using HepsiApp.Application.Exceptions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,10 +19,10 @@ builder.Services.AddCustomMapper();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 app.UseSwagger();
 app.UseSwaggerUI();
 
+app.ConfigureExceptionHandlingMiddleware(); 
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
